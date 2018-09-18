@@ -17,6 +17,7 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FO
 DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+//import apis
 package org.firstinspires.ftc.teamcode;
 import org.firstinspires.ftc.teamcode.StateMachine;
 import org.firstinspires.ftc.robotcore.external.navigation.Position;
@@ -32,7 +33,10 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
+//coment
+/**
+*hveohovhhvpei
+*/
 @TeleOp
 
 public class Driver extends LinearOpMode {
@@ -71,10 +75,12 @@ public class Driver extends LinearOpMode {
             @Override
             public State update() {
                     //sets speed values using ternary operator to enable the precision modes
+                    //precision mode
                     speedDivisor = gamepad2.b?6:1.3;
                     thumbSpeed = gamepad2.a?0.005:0.03;
 /*
                     //Go to first height
+                    //loops commented out and replaced with state machine
                     if(gamepad2.dpad_down){
                         if(arm_gyro.getHeading() < 10 - 5 || arm_gyro.getHeading() > 10 + 5){
                             arm_lift.setPower(Math.signum(arm_gyro.getHeading() - 10) * 0.25);
@@ -130,15 +136,19 @@ public class Driver extends LinearOpMode {
                             }
                     }
 */
-
+                        //????
+                    //checking in everytime it runs through to update arm speed?
                     arm_lift.setPower(gamepad1.right_stick_y * 0.5 / speedDivisor);
 
                     //movement based on left stick
+                    //driving
                     back_left.setPower(gamepad1.left_stick_y / speedDivisor - gamepad1.left_stick_x / speedDivisor);
                     front_left.setPower(gamepad1.left_stick_y / speedDivisor - gamepad1.left_stick_x / speedDivisor);
                     back_right.setPower(-(gamepad1.left_stick_y / speedDivisor + gamepad1.left_stick_x / speedDivisor));
                     front_right.setPower(-(gamepad1.left_stick_y / speedDivisor + gamepad1.left_stick_x / speedDivisor));
 
+                    //differant arm heights based on d-pad
+                    //TELEMETRY telling whats going on
                     telemetry.addData("(B) Motor Precision Mode: ", gamepad2.b?"ON":"OFF");
                     telemetry.addData("(A) Thumb Precision Mode: ", gamepad2.a?"ON":"OFF");
                     telemetry.addData("(^) FOURTH Arm Height: ", gamepad2.dpad_up?"ON":"OFF");
@@ -155,6 +165,9 @@ public class Driver extends LinearOpMode {
 
     public void runOpMode() {
 
+            //left side our variable name
+            //right l=side string is name on phone/hub
+            //basically just names the parts
         arm_lift = hardwareMap.get(DcMotor.class, "arm_lift");
         front_right = hardwareMap.get(DcMotor.class, "front_right");
         front_left = hardwareMap.get(DcMotor.class, "front_left");
@@ -189,7 +202,7 @@ public class Driver extends LinearOpMode {
                 machine.update();
         }
     }
-
+//?????
     private DcMotor arm_lift;
     private DcMotor front_left;
     private DcMotor front_right;
