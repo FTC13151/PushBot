@@ -92,7 +92,149 @@ public class FacingCrater extends LinearOpMode{
             public void start(){}
             @Override
             public State update(){
-                  return turnLeft1
+                  return turnLeft
+            }
+      }
+      public class turnLeft implements StateMachine.State{
+            public void start() {
+                  body_gyro.resetZAxisIntegrator();
+                  telemetry.addData("Gyro", body_gyro.getHeading());
+          }
+
+          @Override
+          public State update() {
+                  // Rotate left
+                  if(Math.abs(imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES).firstAngle) < 20){
+                          back_left.setPower(-0.125);
+                          back_right.setPower(0.125);
+                          return this;
+                  } else {
+                          back_left.setPower(0);
+                          back_right.setPower(0);
+                          return DriveSomeMore;
+                  }
+      }
+      public class DriveSomeMore implemets StateMachine.State{
+            @Override
+            public void start(){
+                  encoderStart = back_left.getCurrentPosition();
+            }
+            @Override
+            public State update(){
+                if (back_left.getCurrentPosition() < encoderStart + 2000) {
+                      back_left.setPower(0.25);
+                      back_right.setPower(0.25);
+                      return this;
+                }
+                else{
+                      back_left.setPower(0);
+                      back_right.setPower(0);
+                      return turnRight1;
+                }
+            }
+      }
+      public class turnRight1 implements StateMachine.State{
+            public void start() {
+                  body_gyro.resetZAxisIntegrator();
+                  telemetry.addData("Gyro", body_gyro.getHeading());
+          }
+
+          @Override
+          public State update() {
+                  // Rotate left
+                  if(Math.abs(imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES).firstAngle) < 20){
+                          back_left.setPower(0.125);
+                          back_right.setPower(-0.125);
+                          return this;
+                  } else {
+                          back_left.setPower(0);
+                          back_right.setPower(0);
+                          return DriveJustALittleMore;
+                  }
+      }
+      public class DriveJustALittleMore implemets StateMachine.State{
+            @Override
+            public void start(){
+                  encoderStart = back_left.getCurrentPosition();
+            }
+            @Override
+            public State update(){
+                if (back_left.getCurrentPosition() < encoderStart + 2000) {
+                      back_left.setPower(0.25);
+                      back_right.setPower(0.25);
+                      return this;
+                }
+                else{
+                      back_left.setPower(0);
+                      back_right.setPower(0);
+                      return turnRight2;
+                }
+            }
+      }
+      public class turnRight2 implements StateMachine.State{
+            public void start() {
+                  body_gyro.resetZAxisIntegrator();
+                  telemetry.addData("Gyro", body_gyro.getHeading());
+          }
+
+          @Override
+          public State update() {
+                  // Rotate left
+                  if(Math.abs(imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES).firstAngle) < 20){
+                          back_left.setPower(0.125);
+                          back_right.setPower(-0.125);
+                          return this;
+                  } else {
+                          back_left.setPower(0);
+                          back_right.setPower(0);
+                          return DriveToBase;
+                  }
+      }
+      public class DriveToBase implemets StateMachine.State{
+            @Override
+            public void start(){
+                  encoderStart = back_left.getCurrentPosition();
+            }
+            @Override
+            public State update(){
+                if (back_left.getCurrentPosition() < encoderStart + 2000) {
+                      back_left.setPower(0.25);
+                      back_right.setPower(0.25);
+                      return this;
+                }
+                else{
+                      back_left.setPower(0);
+                      back_right.setPower(0);
+                      return DropToken;
+                }
+            }
+      }
+      public class DropToken implements StateMachine.State{
+            @Override
+            public void start(){}
+            @Override
+            public State update(){
+                  return DriveBackwardsToCrater;
+            }
+      }
+      public class DriveBackwardsToCrater implemets StateMachine.State{
+            @Override
+            public void start(){
+                  encoderStart = back_left.getCurrentPosition();
+            }
+            @Override
+            public State update(){
+                if (back_left.getCurrentPosition() < encoderStart + 2000) {
+                      back_left.setPower(0.25);
+                      back_right.setPower(0.25);
+                      return this;
+                }
+                else{
+                      back_left.setPower(0);
+                      back_right.setPower(0);
+                      return JESUS HOW DO WE END THIS?!?!?!;
+                }
             }
       }
 }
+
