@@ -167,8 +167,16 @@ public class FacingCrater extends LinearOpMode{
                 else{
                       back_left.setPower(0);
                       back_right.setPower(0);
-                      return turnToCrater;
+                      return DropToken;
                 }
+            }
+      }
+      public class DropToken implements StateMachine.State{
+            @Override
+            public void start(){}
+            @Override
+            public State update(){
+                  return turnToCrater;
             }
       }
       public class turnToCrater implements StateMachine.State{
