@@ -232,7 +232,7 @@ public class FacingCrater extends LinearOpMode{
                 else{
                       back_left.setPower(0);
                       back_right.setPower(0);
-                      return JESUS HOW DO WE END THIS?!?!?!;
+                      return null;
                 }
             }
       }
