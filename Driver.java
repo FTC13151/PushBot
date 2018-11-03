@@ -143,10 +143,7 @@ public class Driver extends LinearOpMode {
                     //movement based on left stick
                     //driving
                     back_left.setPower(gamepad1.left_stick_y / speedDivisor - gamepad1.left_stick_x / speedDivisor);
-                    front_left.setPower(gamepad1.left_stick_y / speedDivisor - gamepad1.left_stick_x / speedDivisor);
                     back_right.setPower(-(gamepad1.left_stick_y / speedDivisor + gamepad1.left_stick_x / speedDivisor));
-                    front_right.setPower(-(gamepad1.left_stick_y / speedDivisor + gamepad1.left_stick_x / speedDivisor));
-
                     //differant arm heights based on d-pad
                     //TELEMETRY telling whats going on
                     telemetry.addData("(B) Motor Precision Mode: ", gamepad2.b?"ON":"OFF");
@@ -169,8 +166,6 @@ public class Driver extends LinearOpMode {
             //right l=side string is name on phone/hub
             //basically just names the parts
         arm_lift = hardwareMap.get(DcMotor.class, "arm_lift");
-        front_right = hardwareMap.get(DcMotor.class, "front_right");
-        front_left = hardwareMap.get(DcMotor.class, "front_left");
         back_right = hardwareMap.get(DcMotor.class, "back_right");
         back_left = hardwareMap.get(DcMotor.class, "back_left");
         color_prox = hardwareMap.get(ColorSensor.class, "color_prox");
@@ -184,15 +179,11 @@ public class Driver extends LinearOpMode {
         drive = new Drive();
         machine = new StateMachine(calibrateGyro);
 
-        front_left.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        front_right.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         back_left.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         back_right.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         arm_lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         arm_lift.setDirection(DcMotor.Direction.REVERSE);
-        front_left.setDirection(DcMotor.Direction.REVERSE);
-        front_right.setDirection(DcMotor.Direction.REVERSE);
         back_left.setDirection(DcMotor.Direction.REVERSE);
         back_right.setDirection(DcMotor.Direction.REVERSE);
 
@@ -204,8 +195,6 @@ public class Driver extends LinearOpMode {
     }
 //?????
     private DcMotor arm_lift;
-    private DcMotor front_left;
-    private DcMotor front_right;
     private DcMotor back_left;
     private DcMotor back_right;
     private ColorSensor color_prox;
