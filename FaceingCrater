@@ -90,10 +90,18 @@ public class FacingCrater extends LinearOpMode{
       public class CheckMinerals implements StateMachine.State{
             @Override
             public void start(){}
+            boolean foundGold = false;
+            //Turn to check outermost on right
+            //if(value read > the min value of the yellow && value read < max value of the yellow)
+            //then foundGold = true
             @Override
             public State update(){
-                  
+                  if(!foundGold){
+                        return this;
+                  }
+                  else{
                   return turnLeft1
+                  }
             }
       }
       public class turnLeft1 implements StateMachine.State{
