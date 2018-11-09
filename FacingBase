@@ -44,7 +44,7 @@ import java.util.Locale;
 @Autonomous 
 
 public class FacingCrater extends LinearOpMode{
-       public class CalibrateGyro implements StateMachine.State {
+       /**public class CalibrateGyro implements StateMachine.State {
             @Override
             public void start() {
                 arm_gyro.calibrate();
@@ -60,7 +60,8 @@ public class FacingCrater extends LinearOpMode{
                 }
             }
         }
-        public class GetOnTheGround implements StateMachine.State{
+        
+       public class GetOnTheGround implements StateMachine.State{
             @Override
             public void start(){}
             @Override
@@ -68,6 +69,7 @@ public class FacingCrater extends LinearOpMode{
                   return DriveOut
             }
       }
+      */
       public class DriveOut implemets StateMachine.State{
             @Override
             public void start(){
@@ -87,7 +89,7 @@ public class FacingCrater extends LinearOpMode{
                 }
             }
       }
-      public class CheckMinerals implements StateMachine.State{
+      /**public class CheckMinerals implements StateMachine.State{
             @Override
             public void start(){}
             @Override
@@ -95,6 +97,7 @@ public class FacingCrater extends LinearOpMode{
                   return turnLeft
             }
       }
+      */
       public class turnLeft implements StateMachine.State{
             public void start() {
                   body_gyro.resetZAxisIntegrator();
