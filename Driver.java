@@ -104,10 +104,12 @@ public class Driver extends LinearOpMode {
                     {
                         arm_extend.setPower(0);
                     }
-
+                    telemetry.addData("extend: ",""+arm_extend.getCurrentPosition() ) ; 
+                    telemetry.addData("lift: ",""+arm_lift.getCurrentPosition() ) ; 
+                    telemetry.update();
                  //LIFT MACHANISM
                     //moving up //top encoder value is -1200
-                    int upperLimit = startingEncoderValue + 2000; 
+                    int upperLimit = startingEncoderValue + 3400; 
                     int lowerLimit = startingEncoderValue + 20; 
                     if(gamepad1.dpad_up)
                     {  
@@ -134,7 +136,7 @@ public class Driver extends LinearOpMode {
                          } 
                          else
                          { 
-                            lift.setPower(0.7);
+                            lift.setPower(0.9);
                          } 
                         String s = ""+lift.getCurrentPosition();
                         telemetry.addData("Encoder Value ",s) ; 
